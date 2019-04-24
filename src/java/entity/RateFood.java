@@ -26,14 +26,14 @@ public class RateFood implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Food food;
-    private Rate rate;
+    private int rate;
     @Temporal(TemporalType.TIMESTAMP)
     private Date date;
 
     public RateFood() {
     }
 
-    public RateFood(Food food, Rate rate, Date date) {
+    public RateFood(Food food, int rate, Date date) {
         this.food = food;
         this.rate = rate;
         this.date = date;
@@ -55,11 +55,11 @@ public class RateFood implements Serializable {
         this.food = food;
     }
 
-    public Rate getRate() {
+    public int getRate() {
         return rate;
     }
 
-    public void setRate(Rate rate) {
+    public void setRate(int rate) {
         this.rate = rate;
     }
 
@@ -110,7 +110,7 @@ public class RateFood implements Serializable {
 
     @Override
     public String toString() {
-        return "RateFood{" + "id=" + id + ", food=" + food.getName() + ", rate=" + rate.getRate() + ", date=" + date + '}';
+        return "RateFood{" + "id=" + id + ", food=" + food.getName() + ", rate=" + rate + ", date=" + date + '}';
     }
     
     

@@ -120,8 +120,11 @@ public class ManagerController extends HttpServlet {
                 request.getRequestDispatcher(PagePathLoader.getPagePath("managerIndex")).forward(request, response);
              
             case "/historyFood":
-                
-                
+                listStudents = studentFacade.findAll();
+                request.setAttribute("listStudents", listStudents);
+                request.getRequestDispatcher(PagePathLoader.getPagePath("historyFood")).forward(request, response);
+            
+            break;
         }
             
     }

@@ -13,7 +13,7 @@
         <title>Добро пожаловать</title>
     </head>
     <body>
-        <form action="index" method="POST">
+        <form action="createRate" method="POST">
             <a href="index">Главная страница</a><br>
             <h1>Просмотр списка блюд</h1>
             <c:forEach var="entry" items="${mapFoodCover}">

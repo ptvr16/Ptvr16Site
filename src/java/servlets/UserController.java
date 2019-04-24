@@ -7,7 +7,7 @@ package servlets;
 
 import entity.Food;
 import entity.Cover;
-import entity.Rate;
+
 import entity.RateFood;
 import entity.User;
 import java.io.IOException;
@@ -26,7 +26,7 @@ import javax.servlet.http.HttpSession;
 import securitylogic.RoleLogic;
 import session.FoodFacade;
 import session.CoverFoodFacade;
-import session.RateFacade;
+
 import session.RateFoodFacade;
 import session.UserFacade;
 import session.UserRolesFacade;
@@ -41,6 +41,7 @@ import utils.PagePathLoader;
     "/showChangePassword",
     "/changePassword",
     "/showFood",
+    "/createRate",
     
     
 })
@@ -51,7 +52,7 @@ public class UserController extends HttpServlet {
     @EJB private UserFacade userFacade;
     @EJB private CoverFoodFacade coverFoodFacade;
     @EJB private RateFoodFacade rateFoodFacade;
-    @EJB private RateFacade rateFacade;
+   
   
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -117,19 +118,26 @@ public class UserController extends HttpServlet {
                 request.getRequestDispatcher("/showLogin").forward(request, response);
                 break;  
             case "/showFood":
-               Cover cover = null;
+                Cover cover = null;
                 List<Food>listFoods=foodFacade.findAll();
                 Map<Food,Cover>mapFoodCover=new HashMap<>();
                 for(int i=0; i<listFoods.size(); i++){
                     cover=coverFoodFacade.findCover(listFoods.get(i));
                     mapFoodCover.put(listFoods.get(i), cover);
                 }
-                
                 request.setAttribute("mapFoodCover", mapFoodCover);
-                
                 request.getRequestDispatcher(PagePathLoader.getPagePath("showFood")).forward(request, response);
                 break;
+            case "/createRate":
+                String foodId = request.getParameter("foodId");
+                String rateId = request.getParameter("rateId");
+                Food food = foodFacade.find(new Long(foodId));
                 
+                RateFood rateFood = new RateFood (food, new Integer(rateId), c.getTime());
+                rateFoodFacade.create(rateFood);
+                request.setAttribute("info", "Отзыв \""+food.getName()+"\"добавлен");
+                request.getRequestDispatcher(PagePathLoader.getPagePath("index")).forward(request, response);
+                break;
         }
    }
     
