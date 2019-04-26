@@ -10,6 +10,7 @@ import entity.Cover;
 import entity.CoverFood;
 import entity.Student;
 import entity.User;
+import entity.UserRoles;
 import java.io.IOException;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -25,7 +26,9 @@ import securitylogic.RoleLogic;
 import session.FoodFacade;
 import session.CoverFoodFacade;
 import session.CoverFacade;
+import session.RateFoodFacade;
 import session.StudentFacade;
+import session.UserFacade;
 import session.UserRolesFacade;
 import utils.PagePathLoader;
 
@@ -38,7 +41,7 @@ import utils.PagePathLoader;
     "/showAddNewFood",
     "/addNewFood",
     "/showUploadFile",
-    "/historyFood",
+    "/historyRate",
     
 })
 public class ManagerController extends HttpServlet {
@@ -47,6 +50,8 @@ public class ManagerController extends HttpServlet {
     @EJB private UserRolesFacade userRolesFacade;
     @EJB private CoverFacade coverFacade;
     @EJB private CoverFoodFacade coverFoodFacade;
+    @EJB private UserFacade userFacade;
+    @EJB private RateFoodFacade rateFoodFacade;
     
     
     
@@ -89,8 +94,8 @@ public class ManagerController extends HttpServlet {
         
         switch (path) {
             case "/showListStudents":
-                List<Student> listStudents = studentFacade.findAll();
-                request.setAttribute("listStudents", listStudents);
+                List<Student> listRatingUsers = studentFacade.findAll();
+                request.setAttribute("listStudents", listRatingUsers);
                 request.setAttribute("info", "showListStudents,привет из сервлета!");
                 request.getRequestDispatcher(PagePathLoader.getPagePath("showListStudents")).forward(request, response);
                 break;
@@ -119,10 +124,10 @@ public class ManagerController extends HttpServlet {
                 request.setAttribute("info", "Нет такой странички");
                 request.getRequestDispatcher(PagePathLoader.getPagePath("managerIndex")).forward(request, response);
              
-            case "/historyFood":
-                listStudents = studentFacade.findAll();
-                request.setAttribute("listStudents", listStudents);
-                request.getRequestDispatcher(PagePathLoader.getPagePath("historyFood")).forward(request, response);
+            case "/historyRate":
+                List<User> listRateUsers = rateFoodFacade.findRateUsers(c.getTime());
+                request.setAttribute("listRateUsers", listRateUsers);
+                request.getRequestDispatcher(PagePathLoader.getPagePath("historyRate")).forward(request, response);
             
             break;
         }

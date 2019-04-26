@@ -6,6 +6,7 @@
 package session;
 
 import entity.Student;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -28,5 +29,7 @@ public class StudentFacade extends AbstractFacade<Student> {
     public StudentFacade() {
         super(Student.class);
     }
+
+    
     
 }

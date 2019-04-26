@@ -133,7 +133,7 @@ public class UserController extends HttpServlet {
                 String rateId = request.getParameter("rateId");
                 Food food = foodFacade.find(new Long(foodId));
                 
-                RateFood rateFood = new RateFood (food, new Integer(rateId), c.getTime());
+                RateFood rateFood = new RateFood (food, new Integer(rateId), regUser, c.getTime());
                 rateFoodFacade.create(rateFood);
                 request.setAttribute("info", "Отзыв \""+food.getName()+"\"добавлен");
                 request.getRequestDispatcher(PagePathLoader.getPagePath("index")).forward(request, response);

@@ -12,6 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -25,17 +26,21 @@ public class RateFood implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @OneToOne
     private Food food;
     private int rate;
+    @OneToOne
+    private User user;
     @Temporal(TemporalType.TIMESTAMP)
     private Date date;
 
     public RateFood() {
     }
 
-    public RateFood(Food food, int rate, Date date) {
+    public RateFood(Food food, int rate, User user, Date date) {
         this.food = food;
         this.rate = rate;
+        this.user = user;
         this.date = date;
     }
 
@@ -63,6 +68,14 @@ public class RateFood implements Serializable {
         this.rate = rate;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     public Date getDate() {
         return date;
     }
@@ -74,10 +87,11 @@ public class RateFood implements Serializable {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 61 * hash + Objects.hashCode(this.id);
-        hash = 61 * hash + Objects.hashCode(this.food);
-        hash = 61 * hash + Objects.hashCode(this.rate);
-        hash = 61 * hash + Objects.hashCode(this.date);
+        hash = 23 * hash + Objects.hashCode(this.id);
+        hash = 23 * hash + Objects.hashCode(this.food);
+        hash = 23 * hash + this.rate;
+        hash = 23 * hash + Objects.hashCode(this.user);
+        hash = 23 * hash + Objects.hashCode(this.date);
         return hash;
     }
 
@@ -93,13 +107,16 @@ public class RateFood implements Serializable {
             return false;
         }
         final RateFood other = (RateFood) obj;
+        if (this.rate != other.rate) {
+            return false;
+        }
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
         if (!Objects.equals(this.food, other.food)) {
             return false;
         }
-        if (!Objects.equals(this.rate, other.rate)) {
+        if (!Objects.equals(this.user, other.user)) {
             return false;
         }
         if (!Objects.equals(this.date, other.date)) {
@@ -110,9 +127,10 @@ public class RateFood implements Serializable {
 
     @Override
     public String toString() {
-        return "RateFood{" + "id=" + id + ", food=" + food.getName() + ", rate=" + rate + ", date=" + date + '}';
+        return "RateFood{" + "id=" + id + ", food=" + food + ", rate=" + rate + ", user=" + user + ", date=" + date + '}';
     }
-    
+
+ 
     
     
 }

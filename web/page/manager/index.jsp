@@ -20,7 +20,7 @@
         <a href="showChangePassword">Изменить пароль</a><br>
         <br>
         <a href="showListStudents">Список студентов</a><br>
-             <a href="historyFood">Список проголосовавших</a><br>
+             <a href="historyRate">Список проголосовавших</a><br>
         <a href="showAddNewFood">Добавить блюдо</a><br>
         <a href="showFood">Список блюд</a><br>
     </body>

@@ -18,8 +18,8 @@
         <a href="index">Главная страница</a><br>
 
         <ul>
-            <c:forEach var="student" items="${listStudents}">
-                <li>${student.name}, ${student.surname}, ${student.email}
+            <c:forEach var="user" items="${listRateUsers}">
+                <li>${user.student.name}, ${user.student.surname}, ${user.student.email}
             </c:forEach>
         </ul>
     </body>

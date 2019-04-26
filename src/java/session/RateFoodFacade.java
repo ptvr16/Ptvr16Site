@@ -6,6 +6,10 @@
 package session;
 
 import entity.RateFood;
+import entity.User;
+import entity.UserRoles;
+import java.util.Date;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -27,6 +31,22 @@ public class RateFoodFacade extends AbstractFacade<RateFood> {
 
     public RateFoodFacade() {
         super(RateFood.class);
+    }
+
+    public List<User> findRateUsers(Date date) {
+        Date tomorrow = null;
+        Date yesterday = null;
+        
+        try {
+            return em.createQuery("SELECT rf FROM RateFood rf WHERE rf.date < :tomorrow AND rf.date > yesterday")
+                .setParameter("tomorrow", tomorrow)
+                .setParameter("yesterday",yesterday)
+                .getResultList();
+        } catch (Exception e) {
+            return null;
+        }
+        
+ 
     }
     
 }
