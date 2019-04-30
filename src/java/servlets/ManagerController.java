@@ -125,8 +125,12 @@ public class ManagerController extends HttpServlet {
                 request.getRequestDispatcher(PagePathLoader.getPagePath("managerIndex")).forward(request, response);
              
             case "/historyRate":
-                List<User> listRateUsers = rateFoodFacade.findRateUsers(c.getTime());
-                request.setAttribute("listRateUsers", listRateUsers);
+                String day = request.getParameter("day");
+                if(day != null){
+                    List<User> listRateUsers = rateFoodFacade.findRateUsers(day);
+                    request.setAttribute("listRateUsers", listRateUsers);
+                }
+                
                 request.getRequestDispatcher(PagePathLoader.getPagePath("historyRate")).forward(request, response);
             
             break;

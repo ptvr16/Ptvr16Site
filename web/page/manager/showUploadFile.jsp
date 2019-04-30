@@ -14,7 +14,7 @@
     <body>
         <h1>Загрузка файла!</h1>
         <p>${info}</p>
-        <a href="index">Главная страница</a><br>
+        <a href="showAddNewFood">Назад</a><br>
         <br>
         <form action="uploadFile" method="POST" enctype="multipart/form-data">
             <input type="text" name="description"><br>

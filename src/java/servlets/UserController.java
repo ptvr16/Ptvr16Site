@@ -11,6 +11,7 @@ import entity.Cover;
 import entity.RateFood;
 import entity.User;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
@@ -129,13 +130,18 @@ public class UserController extends HttpServlet {
                 request.getRequestDispatcher(PagePathLoader.getPagePath("showFood")).forward(request, response);
                 break;
             case "/createRate":
-                String foodId = request.getParameter("foodId");
-                String rateId = request.getParameter("rateId");
-                Food food = foodFacade.find(new Long(foodId));
+                String[] foodIds = request.getParameterValues("foodId");
+                String[] rateIds = request.getParameterValues("rateId");
+                RateFood rateFood=new RateFood();
+                for(int i = 0; i< foodIds.length; i++ ){
+                   rateFood.setFood(foodFacade.find(new Long(foodIds[i])));
+                   rateFood.setRate(new Integer(rateIds[i]));
+                   rateFood.setDate(c.getTime());
+                   rateFood.setUser(regUser);
+                   rateFoodFacade.create(rateFood);
+                }
                 
-                RateFood rateFood = new RateFood (food, new Integer(rateId), regUser, c.getTime());
-                rateFoodFacade.create(rateFood);
-                request.setAttribute("info", "Отзыв \""+food.getName()+"\"добавлен");
+                request.setAttribute("info", "Отзыв добавлен");
                 request.getRequestDispatcher(PagePathLoader.getPagePath("index")).forward(request, response);
                 break;
         }

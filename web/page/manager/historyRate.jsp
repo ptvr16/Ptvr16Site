@@ -1,4 +1,4 @@
-<%-- 
+ <%-- 
     Document   : page3
     Created on : Dec 10, 2018, 11:03:45 AM
     Author     : Melnikov
@@ -16,11 +16,19 @@
         <h1>Здесь вы можете посмотреть список проголосовавших</h1>
         ${info}<br>
         <a href="index">Главная страница</a><br>
-
+        <form action="historyRate">
+            <select name="day">
+                <c:forEach var="day" begin="1" end="31" >
+                    <option value="${day}">${day}</option>
+                </c:forEach>
+            </select>
+            <input type="SUBMIT" value="На дату">
+        </form>
         <ul>
             <c:forEach var="user" items="${listRateUsers}">
                 <li>${user.student.name}, ${user.student.surname}, ${user.student.email}
             </c:forEach>
         </ul>
+       
     </body>
 </html>

@@ -9,7 +9,7 @@
     <body>
         <h1>Зарегистрироваться</h1>
         ${info}<br>
-        <a href="index">Введите данные</a><br>
+        <a href="index">Главная страница</a><br>
         <form action="registration" method="POST">
             Имя:<br>
             <input type="text" name="name"><br>
