@@ -123,7 +123,7 @@ public class UserController extends HttpServlet {
                 List<Food>listFoods=foodFacade.findAll();
                 Map<Food,Cover>mapFoodCover=new HashMap<>();
                 for(int i=0; i<listFoods.size(); i++){
-                    cover=coverFoodFacade.findCover(listFoods.get(i));
+                    cover=coverFoodFacade.findCover(listFoods.get(i));  
                     mapFoodCover.put(listFoods.get(i), cover);
                 }
                 request.setAttribute("mapFoodCover", mapFoodCover);

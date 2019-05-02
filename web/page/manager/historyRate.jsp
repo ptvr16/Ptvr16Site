@@ -22,6 +22,16 @@
                     <option value="${day}">${day}</option>
                 </c:forEach>
             </select>
+            <select name="month">
+                <c:forEach var="month" begin="1" end="12" >
+                    <option value="${month}">${month}</option>
+                </c:forEach>
+            </select>
+            <select name="year">
+                <c:forEach var="year" begin="2018" end="2100" >
+                    <option value="${year}">${year}</option>
+                </c:forEach>
+            </select>
             <input type="SUBMIT" value="На дату">
         </form>
         <ul>

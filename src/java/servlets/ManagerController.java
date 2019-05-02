@@ -126,8 +126,10 @@ public class ManagerController extends HttpServlet {
              
             case "/historyRate":
                 String day = request.getParameter("day");
-                if(day != null){
-                    List<User> listRateUsers = rateFoodFacade.findRateUsers(day);
+                String month = request.getParameter("month");
+                String year = request.getParameter("year");
+                if(day != null && month != null && year != null){
+                    List<User> listRateUsers = rateFoodFacade.findRateUsers(day,month,year);
                     request.setAttribute("listRateUsers", listRateUsers);
                 }
                 

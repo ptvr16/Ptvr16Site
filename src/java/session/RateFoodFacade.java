@@ -35,18 +35,23 @@ public class RateFoodFacade extends AbstractFacade<RateFood> {
         super(RateFood.class);
     }
 
-    public List<User> findRateUsers(String date) {
-        Calendar c= new GregorianCalendar();
-        Calendar today_c = new GregorianCalendar(c.YEAR, c.MONTH, new Integer(date));
-        Calendar tomorrow_c = new GregorianCalendar(c.YEAR, c.MONTH, new Integer(date)+1);
+    public List<User> findRateUsers(String day,String month, String year) {
+//        Calendar now = new GregorianCalendar();
+//        int year = now.get(Calendar.YEAR);
+//        int month = now.get(Calendar.MONTH);
+//        int day = now.get(Calendar.DAY_OF_MONTH);
         
-        Date today = today_c.getTime();
-        Date tomorrow = tomorrow_c.getTime();
+        Calendar today = new GregorianCalendar(new Integer (year), new Integer (month), new Integer (day));
+       // Calendar tomorrow_c = today_c.add(, 1);
+        
+      //  Date today = now.getTime();
+      //  now.add(Calendar.DATE,1);
+      // Date tomorrow = now.getTime();
+       
         
         try {
-            return em.createQuery("SELECT rf FROM RateFood rf WHERE rf.date > :today AND rf.date < tomorrow")
+            return em.createQuery("SELECT rf FROM RateFood rf WHERE rf.date > :today")
                 .setParameter("today", today)
-                .setParameter("tomorrow",tomorrow)
                 .getResultList();
         } catch (Exception e) {
             return null;
