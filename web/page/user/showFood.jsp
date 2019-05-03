@@ -15,7 +15,7 @@
     <body>
         <form action="createRate" method="POST">
             <h1>Просмотр списка блюд</h1>
-            <a href="index">Главная страница</a><br>
+            <a href="showListFoods">Вернуться к списку меню</a><br>
             <c:forEach var="entry" items="${mapFoodCover}">
                 Фото: <br>
                 <img src="insertFile/${entry.value.path}"  ><br>

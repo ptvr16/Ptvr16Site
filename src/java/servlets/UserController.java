@@ -43,6 +43,7 @@ import utils.PagePathLoader;
     "/changePassword",
     "/showFood",
     "/createRate",
+    "/showListFoods",
     
     
 })
@@ -118,9 +119,24 @@ public class UserController extends HttpServlet {
                 request.getRequestDispatcher("/logout");
                 request.getRequestDispatcher("/showLogin").forward(request, response);
                 break;  
+            case "/showListFoods":
+                List<Food> listFoods = null;
+                try {
+                    listFoods = foodFacade.findAll();
+                } catch (Exception e) {
+                    request.setAttribute("info", "Список книг пуст");
+                    request.getRequestDispatcher(PagePathLoader.getPagePath("showListFoods")).forward(request, response);
+                    break;
+                }
+                
+                request.setAttribute("listFoods", listFoods);
+                request.setAttribute("info", "Список меню найден");
+                request.getRequestDispatcher(PagePathLoader.getPagePath("showListFoods")).forward(request, response);
+                break;
+                
             case "/showFood":
                 Cover cover = null;
-                List<Food>listFoods=foodFacade.findAll();
+                listFoods=foodFacade.findAll();
                 Map<Food,Cover>mapFoodCover=new HashMap<>();
                 for(int i=0; i<listFoods.size(); i++){
                     cover=coverFoodFacade.findCover(listFoods.get(i));  
@@ -129,6 +145,7 @@ public class UserController extends HttpServlet {
                 request.setAttribute("mapFoodCover", mapFoodCover);
                 request.getRequestDispatcher(PagePathLoader.getPagePath("showFood")).forward(request, response);
                 break;
+                
             case "/createRate":
                 String[] foodIds = request.getParameterValues("foodId");
                 String[] rateIds = request.getParameterValues("rateId");

@@ -23,7 +23,7 @@
         <a href="showListStudents">Список студентов</a><br>
         <a href="historyRate">Список проголосовавших</a><br>
         <a href="showAddNewFood">Добавить блюдо</a><br>
-        <a href="showFood">Список блюд</a><br>
+        <a href="showListFoods">Список блюд</a><br>
         
     </body>
 </html>

@@ -19,6 +19,6 @@
         <a href="showRegistration">Зарегистрироваться</a><br>
         <a href="showChangePassword">Изменить пароль</a><br>
         <br>
-        <a href="showFood">Список блюд</a><br>
+        <a href="showListFoods">Список блюд</a><br>
     </body>
 </html>

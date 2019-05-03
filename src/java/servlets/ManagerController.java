@@ -8,6 +8,7 @@ package servlets;
 import entity.Food;
 import entity.Cover;
 import entity.CoverFood;
+import entity.RateFood;
 import entity.Student;
 import entity.User;
 import entity.UserRoles;
@@ -129,8 +130,8 @@ public class ManagerController extends HttpServlet {
                 String month = request.getParameter("month");
                 String year = request.getParameter("year");
                 if(day != null && month != null && year != null){
-                    List<User> listRateUsers = rateFoodFacade.findRateUsers(day,month,year);
-                    request.setAttribute("listRateUsers", listRateUsers);
+                    List<RateFood> listRateFoods = rateFoodFacade.findRateFoods(day,month,year);
+                    request.setAttribute("listRateFoods", listRateFoods);
                 }
                 
                 request.getRequestDispatcher(PagePathLoader.getPagePath("historyRate")).forward(request, response);

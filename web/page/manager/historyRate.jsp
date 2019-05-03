@@ -35,8 +35,8 @@
             <input type="SUBMIT" value="На дату">
         </form>
         <ul>
-            <c:forEach var="user" items="${listRateUsers}">
-                <li>${user.student.name}, ${user.student.surname}, ${user.student.email}
+            <c:forEach var="rateFood" items="${listRateFoods}">
+                <li>${rateFood.user.student.name}, ${rateFood.user.student.surname}, ${rateFood.user.student.email}
             </c:forEach>
         </ul>
        
