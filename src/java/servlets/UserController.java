@@ -5,6 +5,7 @@
  */
 package servlets;
 
+
 import entity.Food;
 import entity.Cover;
 
@@ -13,6 +14,7 @@ import entity.User;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.List;
@@ -31,6 +33,7 @@ import session.CoverFoodFacade;
 import session.RateFoodFacade;
 import session.UserFacade;
 import session.UserRolesFacade;
+import utils.DateUtils;
 import utils.Encription;
 import utils.PagePathLoader;
 
@@ -124,11 +127,19 @@ public class UserController extends HttpServlet {
                 try {
                     listFoods = foodFacade.findAll();
                 } catch (Exception e) {
-                    request.setAttribute("info", "Список книг пуст");
+                    request.setAttribute("info", "");
                     request.getRequestDispatcher(PagePathLoader.getPagePath("showListFoods")).forward(request, response);
                     break;
-                }
-                
+                }     
+                    int firstDayWeek = c.getFirstDayOfWeek();
+                    Calendar monday = new GregorianCalendar(c.YEAR, c.MONTH, c.getFirstDayOfWeek());
+                    Map<String, Date> mapWeek = new HashMap<>();
+                        mapWeek.put("Понедельник", monday.getTime());
+                        mapWeek.put("Вторник", DateUtils.plusDaysToDate(monday.getTime(), 1));
+                        mapWeek.put("Среда", DateUtils.plusDaysToDate(monday.getTime(), 2));
+                        mapWeek.put("Четверг", DateUtils.plusDaysToDate(monday.getTime(), 3));
+                        mapWeek.put("Пятница", DateUtils.plusDaysToDate(monday.getTime(), 4));
+                request.setAttribute("mapWeek", mapWeek);
                 request.setAttribute("listFoods", listFoods);
                 request.setAttribute("info", "Список меню найден");
                 request.getRequestDispatcher(PagePathLoader.getPagePath("showListFoods")).forward(request, response);

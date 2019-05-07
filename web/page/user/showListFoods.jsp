@@ -4,6 +4,7 @@
     Author     : Melnikov
 --%>
 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -18,8 +19,13 @@
         ${info}<br>
         <a href="index">Главная страница</a><br>
         <ul>
-            <c:forEach var="food" items="${listFoods}">
-                <li><a href="showFood?foodId=${food.id}">${food.name}, ${food.description}</a>
+            
+            <c:forEach var="entry" items="${mapWeek}">
+                <li>
+                    <fmt:parseDate pattern="dd-MM-yyyy" value="${entry.value}" var="date"/>
+                    ${date}
+                    <a href="showFood?date=${date}"> ${entry.key} </a>
+                </li>
             </c:forEach>
         </ul>
     </body>
