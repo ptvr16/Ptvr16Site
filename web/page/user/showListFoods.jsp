@@ -22,9 +22,7 @@
             
             <c:forEach var="entry" items="${mapWeek}">
                 <li>
-                    <fmt:parseDate pattern="dd-MM-yyyy" value="${entry.value}" var="date"/>
-                    ${date}
-                    <a href="showFood?date=${date}"> ${entry.key} </a>
+                    <a href="showFood?date=${entry.value}"> ${entry.key} </a>
                 </li>
             </c:forEach>
         </ul>

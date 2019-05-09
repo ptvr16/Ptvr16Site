@@ -12,6 +12,7 @@ import entity.Cover;
 import entity.RateFood;
 import entity.User;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -127,35 +128,46 @@ public class UserController extends HttpServlet {
                 try {
                     listFoods = foodFacade.findAll();
                 } catch (Exception e) {
-                    request.setAttribute("info", "");
+                    request.setAttribute("info", "Нет списка меню");
                     request.getRequestDispatcher(PagePathLoader.getPagePath("showListFoods")).forward(request, response);
                     break;
                 }     
                     int firstDayWeek = c.getFirstDayOfWeek();
-                    Calendar monday = new GregorianCalendar(c.YEAR, c.MONTH, c.getFirstDayOfWeek());
-                    Map<String, Date> mapWeek = new HashMap<>();
-                        mapWeek.put("Понедельник", monday.getTime());
-                        mapWeek.put("Вторник", DateUtils.plusDaysToDate(monday.getTime(), 1));
-                        mapWeek.put("Среда", DateUtils.plusDaysToDate(monday.getTime(), 2));
-                        mapWeek.put("Четверг", DateUtils.plusDaysToDate(monday.getTime(), 3));
-                        mapWeek.put("Пятница", DateUtils.plusDaysToDate(monday.getTime(), 4));
+                    SimpleDateFormat sdfYear = new SimpleDateFormat("yyyy");
+                    int yearStr = new Integer(sdfYear.format(c.getTime()));
+                    SimpleDateFormat sdfMonth = new SimpleDateFormat("MM");
+                    int monthStr = new Integer(sdfMonth.format(c.getTime()));
+                    Calendar monday = new GregorianCalendar(yearStr, monthStr, c.getFirstDayOfWeek());
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+                    Map<String, String> mapWeek = new HashMap<>();
+                        
+                        mapWeek.put("Понедельник", dateFormat.format(monday.getTime()));
+                        mapWeek.put("Вторник", dateFormat.format(DateUtils.plusDaysToDate(monday.getTime(), 1)));
+                        mapWeek.put("Среда", dateFormat.format(DateUtils.plusDaysToDate(monday.getTime(), 2)));
+                        mapWeek.put("Четверг", dateFormat.format(DateUtils.plusDaysToDate(monday.getTime(), 3)));
+                        mapWeek.put("Пятница", dateFormat.format(DateUtils.plusDaysToDate(monday.getTime(), 4)));
                 request.setAttribute("mapWeek", mapWeek);
                 request.setAttribute("listFoods", listFoods);
                 request.setAttribute("info", "Список меню найден");
                 request.getRequestDispatcher(PagePathLoader.getPagePath("showListFoods")).forward(request, response);
                 break;
                 
-            case "/showFood":
-                Cover cover = null;
-                listFoods=foodFacade.findAll();
-                Map<Food,Cover>mapFoodCover=new HashMap<>();
-                for(int i=0; i<listFoods.size(); i++){
-                    cover=coverFoodFacade.findCover(listFoods.get(i));  
-                    mapFoodCover.put(listFoods.get(i), cover);
-                }
-                request.setAttribute("mapFoodCover", mapFoodCover);
-                request.getRequestDispatcher(PagePathLoader.getPagePath("showFood")).forward(request, response);
-                break;
+//            case "/showFood":
+//                String date = request.getParameter("date");
+//                String[] dateArray = date.split("/");
+//                c.set(Calendar.YEAR, new Integer(dateArray[0]));
+//                c.set(Calendar.MONTH, new Integer(dateArray[1]));
+//                Calendar ourDate = new GregorianCalendar(c.YEAR,c.MONTH,new Integer(dateArray[2]));
+//                Cover cover = null;
+//                listFoods=foodFacade.findForDate(ourDate.getTime());
+//                Map<Food,Cover>mapFoodCover=new HashMap<>();
+//                for(int i=0; i<listFoods.size(); i++){
+//                    cover=coverFoodFacade.findCover(listFoods.get(i));  
+//                    mapFoodCover.put(listFoods.get(i), cover);
+//                }
+//                request.setAttribute("mapFoodCover", mapFoodCover);
+//                request.getRequestDispatcher(PagePathLoader.getPagePath("showFood")).forward(request, response);
+//                break;
                 
             case "/createRate":
                 String[] foodIds = request.getParameterValues("foodId");

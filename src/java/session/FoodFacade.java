@@ -6,6 +6,8 @@
 package session;
 
 import entity.Food;
+import java.util.Date;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -28,5 +30,7 @@ public class FoodFacade extends AbstractFacade<Food> {
     public FoodFacade() {
         super(Food.class);
     }
+
+    
     
 }
