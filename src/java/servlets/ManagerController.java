@@ -43,6 +43,8 @@ import utils.PagePathLoader;
     "/addNewFood",
     "/showUploadFile",
     "/historyRate",
+    "/showCreateMenu",
+    "/createMenu",
     
 })
 public class ManagerController extends HttpServlet {
@@ -137,6 +139,19 @@ public class ManagerController extends HttpServlet {
                 request.getRequestDispatcher(PagePathLoader.getPagePath("historyRate")).forward(request, response);
             
             break;
+            
+            case "/showCreateMenu":
+                List<Food> listFoods = foodFacade.findAll();
+                request.setAttribute("listFoods", listFoods);
+                request.getRequestDispatcher(PagePathLoader.getPagePath("showCreateMenu")).forward(request, response);
+                break;
+                
+            case "/createMenu":
+                String[] foods = request.getParameterValues("food");
+                String weekDay = request.getParameter("weekDay");
+                for ()
+                break;
+                    
         }
             
     }

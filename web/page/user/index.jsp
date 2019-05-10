@@ -20,5 +20,6 @@
         <a href="showChangePassword">Изменить пароль</a><br>
         <br>
         <a href="showListFoods">Список блюд</a><br>
+        <a href="showCreateMenu">Создать меню</a><br>
     </body>
 </html>
