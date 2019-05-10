@@ -40,23 +40,12 @@ public class RateFoodFacade extends AbstractFacade<RateFood> {
     }
 
     public List<RateFood> findRateFoods(String day,String month, String year) {
-//        Calendar now = new GregorianCalendar();
-//        int year = now.get(Calendar.YEAR);
-//        int month = now.get(Calendar.MONTH);
-//        int day = now.get(Calendar.DAY_OF_MONTH);
-        
         Calendar cToday = new GregorianCalendar(new Integer (year), new Integer (month), new Integer (day));
         Date today = cToday.getTime();
         LocalDateTime localDateTime = Instant.ofEpochMilli(today.getTime()).atZone(ZoneId.systemDefault()).toLocalDateTime();
         LocalDateTime localDateTimePlusDay = localDateTime.plusDays(1L);
         Date tomorow = Date.from(localDateTimePlusDay.atZone(ZoneId.systemDefault()).toInstant());
-       // Calendar tomorrow_c = today_c.add(, 1);
         
-      //  Date today = now.getTime();
-      //  now.add(Calendar.DATE,1);
-      // Date tomorrow = now.getTime();
-//       String date = year +"-"+ month +"-"+ day + " 00:00:00"; 
-//       String query = "SELECT rf FROM RateFood rf WHERE rf.date > " + date;
         try {
             List<RateFood> listRateFoods = em.createQuery("SELECT rf FROM RateFood rf WHERE rf.date > :today AND rf.date < :tomorow")
             .setParameter("today", today)

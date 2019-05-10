@@ -19,5 +19,24 @@ import javax.persistence.Id;
  */
 @Entity
 public class DateFood implements Serializable {
+
+    @Id
+    private Long id;
+
+    public DateFood() {
+        
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public DateFood(Long id) {
+        this.id = id;
+    }
     
 }
