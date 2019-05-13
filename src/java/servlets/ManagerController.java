@@ -8,12 +8,14 @@ package servlets;
 import entity.Food;
 import entity.Cover;
 import entity.CoverFood;
+import entity.DateFood;
 import entity.RateFood;
 import entity.Student;
 import entity.User;
 import entity.UserRoles;
 import java.io.IOException;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 import javax.ejb.EJB;
@@ -27,10 +29,12 @@ import securitylogic.RoleLogic;
 import session.FoodFacade;
 import session.CoverFoodFacade;
 import session.CoverFacade;
+import session.DateFoodFacade;
 import session.RateFoodFacade;
 import session.StudentFacade;
 import session.UserFacade;
 import session.UserRolesFacade;
+import utils.DateUtils;
 import utils.PagePathLoader;
 
 /**
@@ -55,6 +59,8 @@ public class ManagerController extends HttpServlet {
     @EJB private CoverFoodFacade coverFoodFacade;
     @EJB private UserFacade userFacade;
     @EJB private RateFoodFacade rateFoodFacade;
+    @EJB private DateFoodFacade dateFoodFacade;
+    
     
     
     
@@ -147,9 +153,26 @@ public class ManagerController extends HttpServlet {
                 break;
                 
             case "/createMenu":
+                DateFood dateFood = new DateFood();
                 String[] foods = request.getParameterValues("food");
                 String weekDay = request.getParameter("weekDay");
-                for ()
+                
+                int monday = c.getFirstDayOfWeek();
+                int yearInt = c.get(Calendar.YEAR);
+                int monthInt = c.get(Calendar.MONTH);
+                int nextMonth=7;
+                Calendar dateMenu = new GregorianCalendar(yearInt,monthInt,nextMonth);
+                Date date = null;
+                for (int i = 0; i< foods.length; i++){
+                    date = DateUtils.plusDaysToDate(dateMenu.getTime(),new Integer(weekDay));
+                    dateFood.setDate(date);
+                    food = foodFacade.find(new Integer(foods[i]));
+                    dateFood.setFood(food);
+                    dateFood.setDate(date);
+                    dateFood.setFood(food);
+                    dateFoodFacade.create(dateFood);
+                }
+                
                 break;
                     
         }

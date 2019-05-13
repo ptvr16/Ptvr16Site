@@ -25,11 +25,11 @@
                         </c:forEach>  
                     </td>
                     <td>
-                        Понедельник <input type="radio" name="weekDay" value="Понедельник">
-                        Вторник <input type="radio" name="weekDay" value="Вторник">
-                        Среда <input type="radio" name="weekDay" value="Среда">
-                        Четверг <input type="radio" name="weekDay" value="Четверг">
-                        Пятница <input type="radio" name="weekDay" value="Пятница">
+                        Понедельник <input type="radio" name="weekDay" value="0"><br>
+                        Вторник <input type="radio" name="weekDay" value="1"><br>
+                        Среда <input type="radio" name="weekDay" value="2"><br>
+                        Четверг <input type="radio" name="weekDay" value="3"><br>
+                        Пятница <input type="radio" name="weekDay" value="4"><br>
 
                     </td>
                 </tr>
