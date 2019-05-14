@@ -16,10 +16,10 @@
         <form action="createRate" method="POST">
             <h1>Просмотр списка блюд</h1>
             <a href="showListFoods">Вернуться к списку меню</a><br>
-            <c:forEach var="entry" items="${mapFoodCover}">
+            <c:forEach var="entry" items="${mapDateFoodCover}">
                 Фото: <br>
                 <img src="insertFile/${entry.value.path}"  ><br>
-                Заголовок: ${entry.key.name}<br>
+                Заголовок: ${entry.key.food.name}<br>
                 Описание: ${entry.key.description}<br>
 
                 <input type="hidden" name="foodId" value="${entry.key.id}">

@@ -6,9 +6,12 @@
 package session;
 
 import entity.DateFood;
+import java.util.Date;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import utils.DateUtils;
 
 /**
  *
@@ -27,6 +30,18 @@ public class DateFoodFacade extends AbstractFacade<DateFood> {
 
     public DateFoodFacade() {
         super(DateFood.class);
+    }
+
+    public List<DateFood> findForDate(Date time) {
+        Date nextDay = DateUtils.plusDaysToDate(time, 1);
+        try {
+            return  em.createQuery("SELECT df FROM DateFood df WHERE df.date > :time AND df.date < :nextDay")
+                    .setParameter("time", time)
+                    .setParameter("nextDay", nextDay)
+                    .getResultList();
+        } catch (Exception e) {
+            return null;
+        }
     }
     
 }

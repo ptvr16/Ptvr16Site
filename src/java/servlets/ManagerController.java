@@ -129,10 +129,6 @@ public class ManagerController extends HttpServlet {
             case "/showUploadFile":
                 request.getRequestDispatcher(PagePathLoader.getPagePath("showUploadFile")).forward(request, response);
                 break;
-            default:   
-                request.setAttribute("info", "Нет такой странички");
-                request.getRequestDispatcher(PagePathLoader.getPagePath("managerIndex")).forward(request, response);
-             
             case "/historyRate":
                 String day = request.getParameter("day");
                 String month = request.getParameter("month");
@@ -157,22 +153,21 @@ public class ManagerController extends HttpServlet {
                 String[] foods = request.getParameterValues("food");
                 String weekDay = request.getParameter("weekDay");
                 
-                int monday = c.getFirstDayOfWeek();
-                int yearInt = c.get(Calendar.YEAR);
-                int monthInt = c.get(Calendar.MONTH);
-                int nextMonth=7;
-                Calendar dateMenu = new GregorianCalendar(yearInt,monthInt,nextMonth);
+                c.set(Calendar.DAY_OF_WEEK, 1);
+//                int yearInt = c.get(Calendar.YEAR);
+//                int monthInt = c.get(Calendar.MONTH);
+//                int nextMonth=7;
+//                Calendar dateMenu = new GregorianCalendar(yearInt,monthInt,nextMonth);
                 Date date = null;
                 for (int i = 0; i< foods.length; i++){
-                    date = DateUtils.plusDaysToDate(dateMenu.getTime(),new Integer(weekDay));
+                    date = DateUtils.plusDaysToDate(c.getTime(),new Integer(weekDay));
                     dateFood.setDate(date);
-                    food = foodFacade.find(new Integer(foods[i]));
+                    food = foodFacade.find(new Long(foods[i]));
                     dateFood.setFood(food);
                     dateFood.setDate(date);
-                    dateFood.setFood(food);
                     dateFoodFacade.create(dateFood);
                 }
-                
+                request.getRequestDispatcher(PagePathLoader.getPagePath("managerIndex")).forward(request, response);
                 break;
                     
         }
