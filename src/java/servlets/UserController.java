@@ -14,9 +14,7 @@ import entity.RateFood;
 import entity.User;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.List;
@@ -32,7 +30,6 @@ import securitylogic.RoleLogic;
 import session.FoodFacade;
 import session.CoverFoodFacade;
 import session.DateFoodFacade;
-
 import session.RateFoodFacade;
 import session.UserFacade;
 import session.UserRolesFacade;
@@ -148,11 +145,11 @@ public class UserController extends HttpServlet {
                     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
                     Map<String, String> mapWeek = new HashMap<>();
                         
-                        mapWeek.put("Понедельник", dateFormat.format(c.getTime()));
-                        mapWeek.put("Вторник", dateFormat.format(DateUtils.plusDaysToDate(c.getTime(), 1)));
-                        mapWeek.put("Среда", dateFormat.format(DateUtils.plusDaysToDate(c.getTime(), 2)));
-                        mapWeek.put("Четверг", dateFormat.format(DateUtils.plusDaysToDate(c.getTime(), 3)));
-                        mapWeek.put("Пятница", dateFormat.format(DateUtils.plusDaysToDate(c.getTime(), 4)));
+                        mapWeek.put("Понедельник", dateFormat.format(DateUtils.plusDaysToDate(c.getTime(), 1)));
+                        mapWeek.put("Вторник", dateFormat.format(DateUtils.plusDaysToDate(c.getTime(), 2)));
+                        mapWeek.put("Среда", dateFormat.format(DateUtils.plusDaysToDate(c.getTime(), 3)));
+                        mapWeek.put("Четверг", dateFormat.format(DateUtils.plusDaysToDate(c.getTime(), 4)));
+                        mapWeek.put("Пятница", dateFormat.format(DateUtils.plusDaysToDate(c.getTime(), 5)));
                 request.setAttribute("mapWeek", mapWeek);
                 request.setAttribute("listFoods", listFoods);
                 request.setAttribute("info", "Список меню найден");
