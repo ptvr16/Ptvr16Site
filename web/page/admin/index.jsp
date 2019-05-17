@@ -21,7 +21,7 @@
         <br>
         <a href="showChangeRole">Изменить роль</a><br>
         <a href="showListStudents">Список студентов</a><br>
-        <a href="historyRate">Список проголосовавших</a><br>
+        <a href="showHistoryRate">Список проголосовавших</a><br>
         <a href="showAddNewFood">Добавить блюдо</a><br>
         <a href="showCreateMenu">Создать меню</a><br>
         <a href="showListFoods">Список блюд</a><br>

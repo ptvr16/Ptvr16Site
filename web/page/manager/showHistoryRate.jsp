@@ -36,7 +36,7 @@
         </form>
         <ul>
             <c:forEach var="rateFood" items="${listRateFoods}">
-                <li>${rateFood.user.student.name}, ${rateFood.user.student.surname}, ${rateFood.user.student.email}
+                <li>${rateFood.user.student.name}, ${rateFood.user.student.surname}, <br> ${rateFood.rate}, ${rateFood.food.name}
             </c:forEach>
         </ul>
        

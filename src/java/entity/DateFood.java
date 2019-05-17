@@ -30,7 +30,7 @@ public class DateFood implements Serializable {
     private Food food;
     @Temporal(TemporalType.TIMESTAMP)
     private Date date;
-
+    
     public DateFood() {
         
     }

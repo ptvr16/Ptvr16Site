@@ -20,7 +20,7 @@
                 Фото: <br>
                 <img src="insertFile/${entry.value.path}"  ><br>
                 Заголовок: ${entry.key.food.name}<br>
-                Описание: ${entry.key.description}<br>
+                Описание: ${entry.key.food.description}<br>
 
                 <input type="hidden" name="foodId" value="${entry.key.id}">
 

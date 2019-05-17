@@ -40,10 +40,10 @@ public class RateFoodFacade extends AbstractFacade<RateFood> {
     }
 
     public List<RateFood> findRateFoods(String day,String month, String year) {
-        Calendar cToday = new GregorianCalendar(new Integer (year), new Integer (month), new Integer (day));
+        Calendar cToday = new GregorianCalendar(new Integer (year), new Integer (month) -1, new Integer (day));
         Date today = cToday.getTime();
         LocalDateTime localDateTime = Instant.ofEpochMilli(today.getTime()).atZone(ZoneId.systemDefault()).toLocalDateTime();
-        LocalDateTime localDateTimePlusDay = localDateTime.plusDays(1L);
+        LocalDateTime localDateTimePlusDay = localDateTime.plusDays(1);
         Date tomorow = Date.from(localDateTimePlusDay.atZone(ZoneId.systemDefault()).toInstant());
         
         try {

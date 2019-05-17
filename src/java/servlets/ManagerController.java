@@ -45,7 +45,9 @@ import utils.PagePathLoader;
     "/showAddNewFood",
     "/addNewFood",
     "/showUploadFile",
+    "/showHistoryRate",
     "/historyRate",
+    "/showMiddleRate",
     "/showCreateMenu",
     "/createMenu",
     
@@ -128,6 +130,9 @@ public class ManagerController extends HttpServlet {
             case "/showUploadFile":
                 request.getRequestDispatcher(PagePathLoader.getPagePath("showUploadFile")).forward(request, response);
                 break;
+            case "/showHistoryRate":
+                request.getRequestDispatcher(PagePathLoader.getPagePath("showHistoryRate")).forward(request, response);
+                break;
             case "/historyRate":
                 String day = request.getParameter("day");
                 String month = request.getParameter("month");
@@ -135,9 +140,11 @@ public class ManagerController extends HttpServlet {
                 if(day != null && month != null && year != null){
                     List<RateFood> listRateFoods = rateFoodFacade.findRateFoods(day,month,year);
                     request.setAttribute("listRateFoods", listRateFoods);
+                    request.getRequestDispatcher(PagePathLoader.getPagePath("showHistoryRate")).forward(request, response);
+                    break;
                 }
-                
-                request.getRequestDispatcher(PagePathLoader.getPagePath("historyRate")).forward(request, response);
+                request.setAttribute("info", "Нет проголосовавших");
+                request.getRequestDispatcher(PagePathLoader.getPagePath("showHistoryRate")).forward(request, response);
             
             break;
             

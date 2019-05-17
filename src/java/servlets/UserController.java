@@ -158,12 +158,19 @@ public class UserController extends HttpServlet {
                 
             case "/showFood":
                 String date = request.getParameter("date");
-                String[] dateArray = date.split("/");
-                c.set(Calendar.YEAR, new Integer(dateArray[0]));
-                c.set(Calendar.MONTH, new Integer(dateArray[1]));
-                Calendar ourDate = new GregorianCalendar(c.YEAR,c.MONTH,new Integer(dateArray[2]));
+                String[] arrayDate = date.split("/");
+                c.set(Calendar.YEAR, new Integer(arrayDate[0]));
+                c.set(Calendar.MONTH, new Integer(arrayDate[1])-1);
+                c.set(Calendar.DAY_OF_MONTH,new Integer(arrayDate[2])-1);
+//                Calendar ourDate = new GregorianCalendar(
+//                            c.get(Calendar.YEAR,new Integer(arrayDate[0])),
+//                            c.get(Calendar.MONTH,new Integer(arrayDate[1])),
+//                            c.get(Calendar.DAY_OF_MONTH,new Integer(arrayDate[2]))
+//                );
+                SimpleDateFormat ourDateFormat = new SimpleDateFormat("yyyy/MM/dd");
+                String ourDateString = ourDateFormat.format(c.getTime());
                 Cover cover = null;
-                List <DateFood> listDateFoods=dateFoodFacade.findForDate(ourDate.getTime());
+                List <DateFood> listDateFoods=dateFoodFacade.findForDate(c.getTime());
                 Map<DateFood,Cover>mapDateFoodCover=new HashMap<>();
                 for(int i=0; i<listDateFoods.size(); i++){
                     cover=coverFoodFacade.findCover(listDateFoods.get(i).getFood());  
