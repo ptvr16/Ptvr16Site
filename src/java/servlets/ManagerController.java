@@ -16,7 +16,9 @@ import java.io.IOException;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -147,9 +149,31 @@ public class ManagerController extends HttpServlet {
                 request.getRequestDispatcher(PagePathLoader.getPagePath("showHistoryRate")).forward(request, response);
             
             break;
+            case "/showMiddleRate":
+                List<Food> listFoods = foodFacade.findAll();
+                List<RateFood> rateFoods = rateFoodFacade.findAll();
+                Map<Food, Double>mapRatingFoods=new HashMap<>();
+                for (int i = 0; i < listFoods.size(); i++) {
+                    food = listFoods.get(i);
+                    int sumRateFood = 0;
+                    int countFood = 0;
+                    double middleRating = 0.0;
+                    for (int j = 0; j < rateFoods.size(); j++) {
+                        RateFood rateFood = rateFoods.get(j);
+                        if(rateFood.getFood().equals(food)){
+                            sumRateFood += rateFood.getRate();
+                            countFood++;                             
+                        }   
+                    }
+                    middleRating = sumRateFood / countFood;
+                    mapRatingFoods.put(food, middleRating);
+                }
+                request.setAttribute("mapRatingFoods", mapRatingFoods);
+                request.getRequestDispatcher(PagePathLoader.getPagePath("showMiddleRate")).forward(request, response);
+                break;
             
             case "/showCreateMenu":
-                List<Food> listFoods = foodFacade.findAll();
+                listFoods = foodFacade.findAll();
                 request.setAttribute("listFoods", listFoods);
                 request.getRequestDispatcher(PagePathLoader.getPagePath("showCreateMenu")).forward(request, response);
                 break;

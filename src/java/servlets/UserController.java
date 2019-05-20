@@ -184,8 +184,14 @@ public class UserController extends HttpServlet {
                 String[] foodIds = request.getParameterValues("foodId");
                 String[] rateIds = request.getParameterValues("rateId");
                 RateFood rateFood=new RateFood();
+                if (foodIds.length == 0 || rateIds.length == 0) {
+                   request.setAttribute("info", "Отзыв не добавлен");
+                   request.getRequestDispatcher("/showListFoods").forward(request, response);
+                   break;
+                }
                 for(int i = 0; i< foodIds.length; i++ ){
-                   rateFood.setFood(foodFacade.find(new Long(foodIds[i])));
+                   Food food =foodFacade.find(new Long(foodIds[i]));
+                   rateFood.setFood(food);
                    rateFood.setRate(new Integer(rateIds[i]));
                    rateFood.setDate(c.getTime());
                    rateFood.setUser(regUser);

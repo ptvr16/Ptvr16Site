@@ -15,19 +15,12 @@
     <body>
         <h1>Здесь вы можете посмотреть средний балл оценок</h1>
         ${info}<br>
+        <a href="index">Главная страница</a><br>
         <a href="showHistoryRate">Вернуться к списку проголосовавших</a><br>
-        <form action="middleRate">
-            <select name="foodId">
-                <c:forEach var="food" items="${listFoods}">
-                    <option value="${food.id}">${food.name}</option>
-                </c:forEach>
-            </select>
-            
-            <input type="SUBMIT" value="На оценку">
-        </form>
+        
         <ul>
-            <c:forEach var="rateFood" items="${listRateFoods}">
-                <li>${rateFood.rate}, ${rateFood.food.name}
+            <c:forEach var="entry" items="${mapRatingFoods}">
+                <li>${entry.key.name}, ${entry.value}
             </c:forEach>
         </ul>
        

@@ -22,7 +22,7 @@
                 Заголовок: ${entry.key.food.name}<br>
                 Описание: ${entry.key.food.description}<br>
 
-                <input type="hidden" name="foodId" value="${entry.key.id}">
+                <input type="hidden" name="foodId" value="${entry.key.food.id}">
 
                 <div class="form-group">
                     <label for="exampleFormControlSelect1">Example select</label>
