@@ -1,22 +1,52 @@
-
-        <h1>Зарегистрироваться</h1>
+<div class="container" style="background-image: url(css//Design//container5.png); height: 970px; width: 650px; border-left: 3px outset #8B4513; border-right: 3px outset #8B4513;">
+    <br>
+        <h1 class="h" style="margin-top: 80px;">Зарегистрироваться</h1>
         ${info}<br>
-        <a href="index">Главная страница</a><br>
-        <form action="registration" method="POST">
+        <form action="registration" method="POST" style="margin-left: 210px;">
+            <a href="index"><img src="css//Design//button4.png"></a><br>
             Имя:<br>
-            <input type="text" name="name"><br>
+            <div class="row">
+                <div class="col">
+                  <input type="text" class="form-control" name="name" style="width: 200px; height: 30px;">
+                </div>
+            </div>
+            <br>
             Фамилия:<br>
-            <input type="text" name="surname"><br>
+            <div class="row">
+                <div class="col">
+                  <input type="text" class="form-control" name="surname" style="width: 200px; height: 30px;">
+                </div>
+            </div>    
+            <br>
             Email:<br>
-            <input type="text" name="email"><br>
+            <div class="row">
+                <div class="col">
+                  <input type="text" class="form-control" name="email" style="width: 200px; height: 30px;">
+                </div>
+            </div>
             <br>
             Логин:<br>
-            <input type="text" name="login"><br>
+            <div class="row">
+                <div class="col">
+                  <input type="text" class="form-control" name="login" style="width: 200px; height: 30px;">
+                </div>
+            </div>    
             <br>
             Пароль:<br>
-            <input type="text" name="password1"><br>
+            <div class="row">
+                <div class="col">
+                  <input type="text" class="form-control" name="password1" style="width: 200px; height: 30px;">
+                </div>
+            </div>    
             <br>
             Повторите пароль:<br>
-            <input type="text" name="password2"><br>
+            <div class="row">
+                <div class="col">
+                  <input type="text" class="form-control" name="password2" style="width: 200px; height: 30px;">
+                </div>
+            </div>    
             <br>
-            <input type="submit" value="Зарегистрироваться">
+            <input type="image" value="Войти" src="css//Design//button5.png">
+            
+        </form>
+</div>

@@ -1,15 +1,23 @@
 .h{
     color: white;
     text-align: center;
-    margin-top: 150px;
+    margin-top: 130px;
 }
 
 h1{
-    color: #4B0082;
+    color: black;
+    text-align: center;
 }
 
 h2{
     color: #C71585;
+}
+
+h4{
+    color: black;
+    size: 14px;
+    font-family: gabriola;
+    margin-top: 10px;
 }
 
 a{
@@ -36,4 +44,7 @@ body {
 .button {
   margin-left: 40px;
   margin-right: 40px;
+}
+ransparent{
+    opacity: 0;
 }

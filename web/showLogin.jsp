@@ -1,4 +1,4 @@
-<div class="container" style="background-image: url(css//Design//container5.png); height: 970px; width: 648px; border-left: 3px outset #8B4513; border-right: 3px outset #8B4513;">
+<div class="container" style="background-image: url(css//Design//container5.png); height: 970px; width: 650px; border-left: 3px outset #8B4513; border-right: 3px outset #8B4513;">
     <br>
     <h1 class="h">Войдите!</h1>
     <p>${info}</p>
@@ -12,6 +12,6 @@
             <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password" style="border: 1px black solid; width: 200px;">
         </div>
         <br>
-        <input type="submit" value="Войти">
+        <input type="image" value="Войти" src="css//Design//button.png">
     </form>
 </div>
