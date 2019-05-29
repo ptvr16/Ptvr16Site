@@ -11,12 +11,22 @@
     <jsp-config>
         <jsp-property-group>
             <display-name>template1</display-name>
-            <url-pattern>/page/admin/index.jsp</url-pattern>
-            <url-pattern>/index.jsp</url-pattern>
+            <url-pattern>/page/manager/showUploadFile.jsp</url-pattern>
             <url-pattern>/showLogin.jsp</url-pattern>
-            <url-pattern>/page/user/index.jsp</url-pattern>
-            <url-pattern>/page/manager/index.jsp</url-pattern>
+            <url-pattern>/page/user/showFood.jsp</url-pattern>
+            <url-pattern>/page/user/changePassword.jsp</url-pattern>
+            <url-pattern>/page/manager/showMiddleRate.jsp</url-pattern>
+            <url-pattern>/page/manager/showCreateMenu.jsp</url-pattern>
             <url-pattern>/showRegistration.jsp</url-pattern>
+            <url-pattern>/page/admin/index.jsp</url-pattern>
+            <url-pattern>/page/manager/showAddNewFood.jsp</url-pattern>
+            <url-pattern>/page/admin/showChangeRole.jsp</url-pattern>
+            <url-pattern>/index.jsp</url-pattern>
+            <url-pattern>/page/user/index.jsp</url-pattern>
+            <url-pattern>/page/manager/showListStudents.jsp</url-pattern>
+            <url-pattern>/page/manager/showHistoryRate.jsp</url-pattern>
+            <url-pattern>/page/user/showListFoods.jsp</url-pattern>
+            <url-pattern>/page/manager/index.jsp</url-pattern>
             <page-encoding>UTF-8</page-encoding>
             <include-prelude>/WEB-INF/jspf/header.jspf</include-prelude>
             <include-coda>/WEB-INF/jspf/footer.jspf</include-coda>

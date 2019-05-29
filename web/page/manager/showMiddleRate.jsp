@@ -1,28 +1,12 @@
- <%-- 
-    Document   : page3
-    Created on : Dec 10, 2018, 11:03:45 AM
-    Author     : Melnikov
---%>
-
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Столовая</title>
-    </head>
-    <body>
-        <h1>Здесь вы можете посмотреть средний балл оценок</h1>
+<div class="container" style="background-image: url(css//Design//container5.png); height: 970px; width: 650px; border-left: 3px outset #8B4513; border-right: 3px outset #8B4513;">
+        <h1 class="h">Здесь вы можете посмотреть средний балл оценок</h1>
         ${info}<br>
-        <a href="index">Главная страница</a><br>
-        <a href="showHistoryRate">Вернуться к списку проголосовавших</a><br>
+        <a href="index"><img src="css//Design//button4.png" style="margin-left: 210px"></a><br>
+        <a href="showHistoryRate"><img src="css//Design//button8.png" style="margin-left: 210px"></a><br>
         
-        <ul>
+        <ul class="p5">
             <c:forEach var="entry" items="${mapRatingFoods}">
                 <li>${entry.key.name}, ${entry.value}
             </c:forEach>
         </ul>
-       
-    </body>
-</html>
+</div>

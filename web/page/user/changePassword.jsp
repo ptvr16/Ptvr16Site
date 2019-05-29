@@ -1,35 +1,20 @@
-<%-- 
-    Document   : page1
-    Created on : Dec 10, 2018, 10:33:50 AM
-    Author     : Melnikov
---%>
+<div class="container" style="background-image: url(css//Design//container5.png); height: 970px; width: 650px; border-left: 3px outset #8B4513; border-right: 3px outset #8B4513;">
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Изменение пароля</title>
-    </head>
-    <body>
-        <h1>Изменить пароль</h1>
-        <p>${info}</p>
-        <p>Здравствуйте, ${username}, вы вошли как ${login}</p>
+    <h1 class="h">Изменить пароль</h1>
+        
+    <p class="p">Здравствуйте, ${username}, вы вошли как ${login}</p>
+    <a href="index"><img src="css//Design//button4.png" style="margin-left: 205px;"></a><br>
         <form action="changePassword" method="POST">
             <br>
-            <a href="index">Главная страница</a>
-            <br>
-            <br>
-            Введите действующий пароль:
-            <input type="password" name="oldPassword">
-            <br>
-            Введите новый пароль:
-            <input type="password" name="newPassword1">
-            <br>
-            Повторите пароль:
-            <input type="password" name="newPassword2">
-            <br><br>
-            <input type="submit" value="Изменить пароль">
+            <p class="p1">Введите действующий пароль:</p>
+            <input type="password" name="oldPassword" style="margin-left: 215px; width: 185px; height: 30px" class="form-control">
+            
+            <p class="p2">Введите новый пароль:</p>
+            <input type="password" name="newPassword1" style="margin-left: 215px; width: 185px; height: 30px" class="form-control">
+            
+            <p class="p3">Повторите пароль:</p>
+            <input type="password" name="newPassword2" style="margin-left: 215px; width: 185px; height: 30px" class="form-control">
         </form>
-    </body>
-</html>
+        <br>
+    <input type="image" value="Изменить пароль" src="css//Design//button6.png" style="margin-left: 205px;">
+</div>

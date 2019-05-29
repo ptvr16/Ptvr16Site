@@ -1,7 +1,11 @@
 .h{
+    font-family: gabriola;
+    font-weight: bolder;
+    font-size: 62px;
     color: white;
     text-align: center;
-    margin-top: 130px;
+    padding-top: 130px;
+    text-shadow: black 0 0 10px;
 }
 
 h1{
@@ -45,6 +49,56 @@ body {
   margin-left: 40px;
   margin-right: 40px;
 }
-ransparent{
-    opacity: 0;
+
+.p{
+    font-family: gabriola;
+    font-size: 22px;
+    text-align: center;
+    color: white;
+    text-shadow: black 0 0 10px;
+}
+.p1{
+    color: #5c2f0e;
+    font-size: 26px;
+    font-family: gabriola;
+    margin-left: 170px;
+    text-shadow: white 0 0 10px;
+    font-weight: bold;
+    margin-bottom: -5px;
+}
+.p2{
+    color: #5c2f0e;
+    font-size: 26px;
+    font-family: gabriola;
+    margin-left: 205px;
+    text-shadow: white 0 0 10px;
+    font-weight: bold;
+    margin-bottom: -5px;
+}
+.p3{
+    color: #5c2f0e;
+    font-size: 26px;
+    font-family: gabriola;
+    margin-left: 220px;
+    text-shadow: white 0 0 10px;
+    font-weight: bold;
+    margin-bottom: -5px;
+}
+.p4{
+    color: #5c2f0e;
+    font-size: 26px;
+    font-family: gabriola;
+    text-shadow: white 0 0 10px;
+    font-weight: bold;
+    margin-left: 70px;
+    margin-bottom: -5px;
+}
+.p5{
+    color: #5c2f0e;
+    font-size: 26px;
+    font-family: gabriola;
+    text-shadow: white 0 0 10px;
+    font-weight: bold;
+    margin-left: 20px;
+    margin-bottom: -5px;
 }

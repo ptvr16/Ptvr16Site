@@ -4,11 +4,11 @@
     <p>${info}</p>
     <form action="login" method="POST" style="margin-left: 210px;">
         <div class="form-group">
-            <label for="formGroupExampleInput" >Логин</label>
+            <label for="formGroupExampleInput"><p class="p4">Логин</p></label>
             <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Login" name="login" style="border: 1px black solid; width: 200px;">
         </div>
         <div class="form-group">
-            <label for="exampleInputPassword1" >Пароль</label>
+            <label for="exampleInputPassword1"><p class="p4">Пароль</p></label>
             <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password" style="border: 1px black solid; width: 200px;">
         </div>
         <br>

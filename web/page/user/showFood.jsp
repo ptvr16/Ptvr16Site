@@ -1,18 +1,4 @@
-<%-- 
-    Document   : showBook
-    Created on : Mar 7, 2019, 10:14:49 AM
-    Author     : Melnikov
---%>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Добро пожаловать</title>
-    </head>
-    <body>
         <form action="createRate" method="POST">
             <h1>Просмотр списка блюд</h1>
             <a href="showListFoods">Вернуться к списку меню</a><br>
@@ -40,5 +26,3 @@
                 <br>
             <input type="submit" value="Отправить отзыв">
         </form>
-    </body>
-</html>

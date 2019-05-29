@@ -1,18 +1,4 @@
-<%-- 
-    Document   : showCreateMenu
-    Created on : May 10, 2019, 9:56:22 AM
-    Author     : pupil
---%>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Создание меню</title>
-    </head>
-    <body>
         <h1>Создаем меню</h1>
         <form action="createMenu" method="POST">
             <table>
@@ -36,5 +22,3 @@
             </table>
             <input type="submit" value="Назначить">
         </form>
-    </body>
-</html>
