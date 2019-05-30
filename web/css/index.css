@@ -4,7 +4,7 @@
     font-size: 62px;
     color: white;
     text-align: center;
-    padding-top: 130px;
+    padding-top: 100px;
     text-shadow: black 0 0 10px;
 }
 
@@ -100,5 +100,13 @@ body {
     text-shadow: white 0 0 10px;
     font-weight: bold;
     margin-left: 20px;
+    margin-bottom: -5px;
+}
+.p6{
+    color: #5c2f0e;
+    font-size: 26px;
+    font-family: gabriola;
+    text-shadow: white 0 0 10px;
+    font-weight: bold;
     margin-bottom: -5px;
 }
