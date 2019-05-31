@@ -23,9 +23,9 @@
             </select>
             <input type="SUBMIT" value="На дату">
         </form>
-        <ul class="p5" style="margin-left: 190px;">
+        <ul class="p5" style="margin-left: 100px;">
             <c:forEach var="rateFood" items="${listRateFoods}">
-                <li>${rateFood.user.student.name}, ${rateFood.user.student.surname}, <br> ${rateFood.rate}, ${rateFood.food.name}
+                <li>${rateFood.rate} - ${rateFood.food.name} &nbsp &nbsp &nbsp (${rateFood.user.student.name} ${rateFood.user.student.surname})
             </c:forEach>
         </ul>
 </div>
